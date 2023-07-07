@@ -1,13 +1,18 @@
 import { fetcher } from './utils/utils.js'
 import BarRace from './components/BarRace'
 import useSWR from "swr";
-import LoadingPage from './components/LoadingPage.jsx';
+import LoadingPage from './pages/LoadingPage.jsx';
 
 function App() {
-  const { data, isLoading, error } = useSWR("http://localhost:4001/api/country", fetcher);
+  const { VITE_HOST, VITE_API } = import.meta.env;
+  const { data, isLoading, error } = useSWR(VITE_HOST + VITE_API, fetcher);
 
   if (isLoading) {
     return <LoadingPage />;
+  }
+
+  if (error) {
+    return "!Oops, Something happening on backend server do something else and comeback again.";
   }
 
   return (

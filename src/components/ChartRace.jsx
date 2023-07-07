@@ -26,10 +26,13 @@ export default class ChartRace extends Component {
     const translateY = indis === 0 ? this.props.padding : (this.props.padding + (indis * this.props.itemHeight) + (indis * this.props.gap));
     return (
       <div key={index} className="raceItem" style={{ height: this.props.itemHeight, transform: 'translateY(' + translateY + 'px) translateX(' + this.props.padding + 'px)' }}>
-        <b style={{ backgroundColor: item.color, width: item.value / this.state.maxValue * (this.props.width - 120 - (2 * this.props.padding)) }}>
+        <b style={{
+          backgroundColor: item.color,
+          width: item.value / this.state.maxValue * (this.props.width - (2 * this.props.padding))
+        }}>
           {/* <span> */}
-            <em style={this.props.titleStyle}>{item.title} ({item.value} cases)</em>
-            {/* <i style={this.props.valueStyle}>{item.value}</i> */}
+          <em style={this.props.titleStyle}>{item.title} ({item.value} cases)</em>
+          {/* <i style={this.props.valueStyle}>{item.value}</i> */}
           {/* </span> */}
         </b>
       </div>
@@ -48,11 +51,11 @@ export default class ChartRace extends Component {
 
 ChartRace.defaultProps = {
   data: [],
-  backgroundColor: '#fff',
+  backgroundColor: '#EEE',
   width: 680,
   padding: 20,
   itemHeight: 30,
   gap: 4,
-  titleStyle: { font: 'normal 400 13px Arial', color: '#212121' },
+  titleStyle: { font: 'normal 400 13px Arial', color: '#000' },
   valueStyle: { font: 'normal 400 11px Arial', color: '#777' }
 };
