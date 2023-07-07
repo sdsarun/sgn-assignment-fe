@@ -6,10 +6,15 @@ import LoadingPage from './pages/LoadingPage.jsx';
 function App() {
   const { VITE_HOST, VITE_API } = import.meta.env;
 
-  const cacheData = JSON.parse(localStorage.getItem("data"));
-  if (cacheData) {
-    return <BarRace data={cacheData} />
-  } 
+  try {
+    const cacheData = JSON.parse(localStorage.getItem("data"));
+    console.log(cacheData);
+    if (cacheData) {
+      return <BarRace data={cacheData} />
+    } 
+  } catch (error) {
+
+  }
 
   const { data, isLoading, error } = useSWR(VITE_HOST + VITE_API, fetcher);
   if (isLoading) {

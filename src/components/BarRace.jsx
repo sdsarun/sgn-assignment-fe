@@ -22,7 +22,7 @@ export default function BarRace({ data: rawData }) {
     return () => {
       clearInterval(intervalId);
     };
-  }, [dayEnd]);
+  }, []);
 
   useEffect(() => {
     const updateData = rawData.map((e, index) => {
